@@ -1,5 +1,8 @@
-import random, requests
+import random
 from time import sleep
+
+import requests
+
 
 def makeRequest(url):
     _ = requests.get(url)
@@ -7,17 +10,21 @@ def makeRequest(url):
 
 
 def getURL():
-    return sites[random.randint(0,len(sites)-1)].rstrip()
+    return sites[random.randint(0, len(sites) - 1)].rstrip()
 
-clickthrough = .5
+
+clickthrough = 0.5
 sleeptime = 1
+
+
 def browsingSession():
-    while(random.random() < clickthrough):
+    while random.random() < clickthrough:
         url = getURL()
         makeRequest(url)
-        sleep(random.randint(0,sleeptime))
-        
-f = open("sites.txt","r")
+        sleep(random.randint(0, sleeptime))
+
+
+f = open("sites.txt", "r")
 sites = f.readlines()
 
 browsingSession()

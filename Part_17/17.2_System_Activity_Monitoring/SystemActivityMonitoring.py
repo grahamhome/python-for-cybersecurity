@@ -2,14 +2,15 @@ import win32evtlog
 
 server = "localhost"
 logtype = "Security"
-flags = win32evtlog.EVENTLOG_FORWARDS_READ|win32evtlog.EVENTLOG_SEQUENTIAL_READ
+flags = win32evtlog.EVENTLOG_FORWARDS_READ | win32evtlog.EVENTLOG_SEQUENTIAL_READ
 
 failures = {}
 
+
 def checkEvents():
-    h = win32evtlog.OpenEventLog(server,logtype)
+    h = win32evtlog.OpenEventLog(server, logtype)
     while True:
-        events = win32evtlog.ReadEventLog(h,flags,0)
+        events = win32evtlog.ReadEventLog(h, flags, 0)
         if events:
             for event in events:
                 if event.EventID == 4625:
@@ -22,9 +23,8 @@ def checkEvents():
         else:
             break
 
+
 checkEvents()
 
 for account in failures:
-    print("%s: %s failed logins" % (account,failures[account]))
-
-
+    print("%s: %s failed logins" % (account, failures[account]))
