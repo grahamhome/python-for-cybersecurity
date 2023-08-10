@@ -2,6 +2,13 @@ import signal
 import sys
 from time import sleep
 
+"""
+Decoy process that may be disguised as another process (e.g. AV software).
+If terminated by another process, reports the name of this process.
+
+Unable to catch and respond to SIGKILL signals.
+"""
+
 
 def terminated(signum, frame):
     pass

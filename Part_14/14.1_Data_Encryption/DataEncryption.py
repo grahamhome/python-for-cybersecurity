@@ -3,6 +3,10 @@ from pathlib import Path
 
 from Crypto.Cipher import AES
 
+"""
+Encrypts .docx files within a specific directory
+"""
+
 key = b"Sixteen byte key"
 iv = os.urandom(16)
 

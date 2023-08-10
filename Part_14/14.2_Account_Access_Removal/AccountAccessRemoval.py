@@ -1,6 +1,13 @@
 import platform
 
 
+"""
+Determines system OS and issues appropriate commands to change current user's password
+to prevent user from accessing their account. 
+
+Must be run with admin permissions.
+"""
+
 def setWindowsPassword(username, password):
     from win32com import adsi
 
@@ -14,6 +21,9 @@ def setLinuxPassword(username, password):
 
 
 def changeCriteria(username):
+    """
+    Filter to prevent changing important accounts during testing
+    """
     if username in ["testuser", "user1"]:
         return True
     else:

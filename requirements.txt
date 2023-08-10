@@ -10,3 +10,4 @@ pyinstaller
 requests
 scapy
 wmi
+Crypto
