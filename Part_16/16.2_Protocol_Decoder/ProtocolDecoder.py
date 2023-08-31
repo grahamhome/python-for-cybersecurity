@@ -8,14 +8,17 @@ b64regex = b"[A-Za-z0-9+/=]+"
 
 def extractData(data):
     data = data.rstrip()
+    # Find b64-encoded data
     matches = re.findall(b64regex, data)
     for match in matches:
         if len(match) == 0:
             continue
         try:
+            # Add back stripped-off padding to make a complete b64 block
             if not len(match) % 4 == 0:
                 padnum = (4 - len(match) % 4) % 4
                 match += b"=" * padnum
+            # Decode and print encoded data
             decoded = b64decode(match).decode("utf-8")
             if len(decoded) > 5 and decoded.isprintable():
                 print("Decoded: %s" % decoded)

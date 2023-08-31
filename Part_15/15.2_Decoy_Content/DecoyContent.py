@@ -1,5 +1,12 @@
 import pathlib
 
+"""
+Checks the creation, modification and access timestamps for a 
+set of decoy files. Decoy files should be named and located such that 
+they would only be accessed by an attacker.
+
+Trusts file timestamps and contents of verification file...
+"""
 
 def getTimestamps(filename):
     fname = pathlib.Path(filename)

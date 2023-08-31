@@ -3,6 +3,8 @@ from time import sleep
 
 import requests
 
+# Creates network traffic to/from a decoy system. Does not create browser cookies, temp files or
+# other local artifacts (Selenium and Chrome could be a better solution for this)
 
 def makeRequest(url):
     _ = requests.get(url)

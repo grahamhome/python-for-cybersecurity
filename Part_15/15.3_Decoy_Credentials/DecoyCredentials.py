@@ -7,6 +7,12 @@ import time
 import asyncssh
 
 
+"""
+Starts a decoy SSH server which auto-terminates connections, 
+logging IP addresses and user-provided credentials in order to monitor for the use of decoy credentials.
+"""
+
+
 def handle_client(process):
     process.exit(0)
 

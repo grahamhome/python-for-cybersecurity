@@ -6,6 +6,7 @@ from time import sleep
 Decoy process that may be disguised as another process (e.g. AV software).
 If terminated by another process, reports the name of this process.
 
+Linux-only.
 Unable to catch and respond to SIGKILL signals.
 """
 

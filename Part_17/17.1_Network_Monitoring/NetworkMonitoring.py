@@ -1,5 +1,8 @@
 from scapy.all import *
 
+# Uses the "length" header in IP packets to calculate the amount of data flowing to and from
+# different hosts in order to help detect data exfiltration events.
+
 flowData = {}
 
 

@@ -3,8 +3,14 @@ import psutil
 conn_counts = {}
 totalConns = 0
 
+# Monitor system processes for anomalous behavior:
+# Whether or not system processes have network connections and how unusual this is.
 
 def buildBaseline():
+    """
+    Run when confidence in system being uninfected is high.
+    Can be run repeatedly in same Python session to collect more data.
+    """
     for p in psutil.pids():
         proc = psutil.Process(p)
         name = proc.name()
@@ -20,6 +26,9 @@ threshold = 0.5
 
 
 def checkConnections():
+    """
+    Run continuously to monitor for deviations from baseline
+    """
     for p in psutil.pids():
         proc = psutil.Process(p)
         name = proc.name()
